@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 //endregion
 @Entity
-@Table(name = "appointments", schema = "project2")
+@Table(name = "appointments")
 public class Appointment {
 
     @Id

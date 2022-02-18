@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 //endregion
 @Entity
-@Table(name = "clients", schema = "project2")
+@Table(name = "clients")
 public class Client {
 
     @Id
@@ -40,7 +40,6 @@ public class Client {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "client_listing",
-        schema = "project2",
         joinColumns = @JoinColumn(name = "c_id"),
         inverseJoinColumns = @JoinColumn(name = "l_id")
     )

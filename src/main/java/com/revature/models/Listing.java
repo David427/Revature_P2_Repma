@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 //endregion
 @Entity
-@Table(name = "listings", schema = "project2")
+@Table(name = "listings")
 public class Listing {
 
     @Id
