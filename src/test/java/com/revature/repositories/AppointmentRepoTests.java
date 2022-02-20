@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,9 +24,10 @@ public class AppointmentRepoTests {
     @Autowired
     private AppointmentRepo appointmentRepo;
 
-    @Test
-    void givenNothing_whenFindAll_thenGetAllApptsFromDb() {
-        List<Appointment> appts = (List<Appointment>) appointmentRepo.findAll();
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void givenClient_whenFindAll_thenGetAllApptsFromDb(int id) {
+        List<Appointment> appts = (List<Appointment>) appointmentRepo.findAllById(Collections.singleton(id));
         assertFalse(appts.isEmpty());
     }
 

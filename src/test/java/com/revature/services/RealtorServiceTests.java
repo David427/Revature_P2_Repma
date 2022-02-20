@@ -1,8 +1,11 @@
 package com.revature.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revature.app.RepmaApplication;
+import com.revature.models.Client;
 import com.revature.models.Listing;
 import com.revature.models.Realtor;
+import com.revature.repositories.RealtorRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,6 +28,9 @@ import static org.mockito.Mockito.verify;
 public class RealtorServiceTests {
     @Autowired
     RealtorService realtorService;
+
+    @Autowired
+    RealtorRepo realtorRepo;
 
     @Test
     void givenNothing_whenGetAllRealtors_thenGetAllRealtorsFromDb() {
@@ -91,8 +98,47 @@ public class RealtorServiceTests {
     @ValueSource(ints = {1, 2, 3})
     @Rollback
     void givenRealtorId_whenDeleteRealtor_thenDeleteRealtorInDb(int id) {
-        RealtorServiceImpl mockService = mock(RealtorServiceImpl.class);
-        mockService.deleteRealtor(id);
-        verify(mockService).deleteRealtor((id));
+        realtorService.deleteRealtor(id);
+        Optional<Realtor> output = realtorRepo.findById(id);
+        assertFalse(output.isPresent());
+    }
+
+    @Test
+    void givenEmail_whenFindByEmail_thenGetRealtor() {
+        String email = "realtor1@gmail.com";
+        Realtor output = realtorService.getRealtorByEmail(email);
+        assertEquals(1, output.getRealtorId());
+    }
+
+    @Test
+    void givenEmailandPass_whenLogin_thenClientLogin() {
+        String email = "realtor1@gmail.com";
+        String password = "Password!";
+
+        assertTrue(realtorService.realtorLogin(email, password));
+    }
+
+    @Test
+    void givenWrongPass_whenLogin_thenFailClientLogin() {
+        String email = "email1@gmail.com";
+        String password = "Password!!!";
+
+        assertFalse(realtorService.realtorLogin(email, password));
+    }
+
+    @Test
+    void givenJSON_whenAddClient_thenAddClient() throws JsonProcessingException {
+        String jsonString = "{" +
+                "\"realtorId\":\"0\"," +
+                "\"firstName\":\"Fake\"," +
+                "\"lastName\":\"Person\"," +
+                "\"email\":\"realtor4@gmail.com\"," +
+                "\"phoneNumber\":\"999-888-7777\"," +
+                "\"password\":\"Password!\"" +
+                "}";
+
+        Realtor output = realtorService.realtorRegistration(jsonString);
+        assertEquals("Fake", output.getFirstName());
+        assertNotEquals(0, output.getRealtorId());
     }
 }

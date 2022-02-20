@@ -8,8 +8,9 @@ public interface AppointmentService {
 
     public void addAppointment(Appointment a);
     public Appointment getAppointmentById(int id);
-    public List<Appointment> getAllAppointments();
-    public Appointment updateAppointment(Appointment change);
+    public List<Appointment> getAllAppointmentsByClient(int id);
+    public List<Appointment> getAllAppointmentsByListing(int id);
+    public void updateAppointment(Appointment change);
     public boolean deleteAppointment(int id);
 
 }

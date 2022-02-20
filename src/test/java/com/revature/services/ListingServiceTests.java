@@ -4,6 +4,7 @@ import com.revature.app.RepmaApplication;
 import com.revature.models.Client;
 import com.revature.models.Listing;
 import com.revature.models.Realtor;
+import com.revature.repositories.ListingRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,6 +28,9 @@ import static org.mockito.Mockito.verify;
 public class ListingServiceTests {
     @Autowired
     ListingService listingService;
+
+    @Autowired
+    ListingRepo listingRepo;
 
     @Test
     void givenNothing_whenGetAllListings_thenGetAllListingsFromDb() {
@@ -126,8 +131,8 @@ public class ListingServiceTests {
     @ValueSource(ints = {1, 2, 3})
     @Rollback
     void givenListingId_whenDeleteListing_thenDeleteListingInDb(int id) {
-        ListingServiceImpl mockService = mock(ListingServiceImpl.class);
-        mockService.deleteListing(id);
-        verify(mockService).deleteListing((id));
+        listingService.deleteListing(id);
+        Optional<Listing> output = listingRepo.findById(id);
+        assertFalse(output.isPresent());
     }
 }

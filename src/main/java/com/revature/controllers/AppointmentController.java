@@ -19,10 +19,10 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping
-    public List<Appointment> getAllAppointments(){
-        return appointmentService.getAllAppointments();
-    }
+    // @GetMapping("/{client_id}")
+    // public List<Appointment> getAllAppointmentsByClient(@PathVariable("client_id") Integer id){
+    //     return appointmentService.getAllAppointmentsByClient(id);
+    // }
 
     @GetMapping(value = "/{appt_id}")
     public ResponseEntity<Appointment> getAppt(@PathVariable("appt_id") Integer id){

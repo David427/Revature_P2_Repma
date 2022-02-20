@@ -1,7 +1,6 @@
 package com.revature.services;
 
 import com.revature.models.Appointment;
-import com.revature.models.Client;
 import com.revature.repositories.AppointmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -25,13 +24,18 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> getAllAppointments() {
-        return (List<Appointment>) appointmentRepo.findAll();
+    public List<Appointment> getAllAppointmentsByClient(int id) {
+        return appointmentRepo.findAllByClientId(id);
     }
 
     @Override
-    public Appointment updateAppointment(Appointment change) {
-        return appointmentRepo.save(change);
+    public List<Appointment> getAllAppointmentsByListing(int id) {
+        return appointmentRepo.findAllByListingId(id);
+    }
+
+    @Override
+    public void updateAppointment(Appointment change) {
+        appointmentRepo.save(change);
     }
 
     @Override
@@ -39,7 +43,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         try {
             appointmentRepo.deleteById(id);
             return true;
-        } catch (IllegalArgumentException | EmptyResultDataAccessException e) {
+        } catch (EmptyResultDataAccessException e) {
             e.printStackTrace();
             return false;
         }

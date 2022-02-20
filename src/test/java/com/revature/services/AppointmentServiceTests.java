@@ -2,29 +2,42 @@ package com.revature.services;
 
 import com.revature.app.RepmaApplication;
 import com.revature.models.Appointment;
+import com.revature.repositories.AppointmentRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 @SpringBootTest(classes = RepmaApplication.class)
 @Transactional
 public class AppointmentServiceTests {
+
     @Autowired
     AppointmentService appointmentService;
 
-    @Test
-    void givenNothing_whenGetAllAppts_thenGetAllApptsFromDb() {
-        List<Appointment> appts = appointmentService.getAllAppointments();
+    @Autowired
+    AppointmentRepo appointmentRepo;
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void givenClientId_whenGetAllAppts_thenGetAllApptsFromDb(int id) {
+        List<Appointment> appts = appointmentService.getAllAppointmentsByClient(id);
+        assertFalse(appts.isEmpty());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void givenListingId_whenGetAllAppts_thenGetAllApptsFromDb(int id) {
+        List<Appointment> appts = appointmentService.getAllAppointmentsByListing(id);
         assertFalse(appts.isEmpty());
     }
 
@@ -77,8 +90,17 @@ public class AppointmentServiceTests {
     @ValueSource(ints = {1, 2, 3})
     @Rollback
     void givenApptId_whenDeleteAppt_thenDeleteApptInDb(int id) {
-        AppointmentServiceImpl mockService = mock(AppointmentServiceImpl.class);
-        mockService.deleteAppointment(id);
-        verify(mockService).deleteAppointment((id));
+        appointmentService.deleteAppointment(id);
+        Optional<Appointment> output = appointmentRepo.findById(id);
+        assertFalse(output.isPresent());
     }
+
+    // @Test
+    // @Rollback
+    // void givenNullApptId_whenDeleteAppt_thenThrowException() {
+    //     assertThrows(EmptyResultDataAccessException.class, () -> {
+    //         int id = 0;
+    //         appointmentService.deleteAppointment(id);
+    //     });
+    // }
 }

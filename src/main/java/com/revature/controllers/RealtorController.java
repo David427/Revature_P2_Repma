@@ -30,15 +30,15 @@ public class RealtorController {
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping(value = "", consumes = "application/json", produces = "application/json")
+    public void addRealtor(@RequestBody Realtor r){
+        realtorService.addRealtor(r);
+    }
+
     @PutMapping(value = "/{realtor_id}", consumes = "application/json", produces = "application/json")
     public Realtor updateRealtor(@PathVariable("realtor_id") int id, @RequestBody Realtor r){
         r.setRealtorId(id);
         return realtorService.updateRealtor(r);
-    }
-
-    @PostMapping(value = "", consumes = "application/json", produces = "application/json")
-    public void addRealtor(@RequestBody Realtor r){
-        realtorService.addRealtor(r);
     }
 
     // @Authorized
