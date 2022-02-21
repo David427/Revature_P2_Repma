@@ -45,4 +45,17 @@ public class Client {
     )
     @JsonIgnoreProperties("savedByClients")
     private Set<Listing> savedListings;
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientId=" + clientId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", savedListings=" + savedListings +
+                '}';
+    }
 }

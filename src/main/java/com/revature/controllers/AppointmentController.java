@@ -19,11 +19,6 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    // @GetMapping("/{client_id}")
-    // public List<Appointment> getAllAppointmentsByClient(@PathVariable("client_id") Integer id){
-    //     return appointmentService.getAllAppointmentsByClient(id);
-    // }
-
     @GetMapping(value = "/{appt_id}")
     public ResponseEntity<Appointment> getAppt(@PathVariable("appt_id") Integer id){
         Appointment appointments = appointmentService.getAppointmentById(id);
@@ -33,11 +28,10 @@ public class AppointmentController {
     }
 
     //@Authorized
-    @DeleteMapping(value = "/{appt_id}" )
+    @DeleteMapping(value = "/{appt_id}")
     public ResponseEntity<Client> deleteAppointment(@PathVariable("appt_id") Integer id){
         boolean check = appointmentService.deleteAppointment(id);
         return new ResponseEntity<>((check) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
-
 
 }

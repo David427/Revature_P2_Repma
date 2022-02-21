@@ -26,119 +26,119 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest(classes = RepmaApplication.class)
 @Transactional
 public class RealtorServiceTests {
-    @Autowired
-    RealtorService realtorService;
-
-    @Autowired
-    RealtorRepo realtorRepo;
-
-    @Test
-    void givenNothing_whenGetAllRealtors_thenGetAllRealtorsFromDb() {
-        List<Realtor> realtors = realtorService.getAllRealtors();
-        assertFalse(realtors.isEmpty());
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void givenRealtorId_whenGetRealtorById_thenGetRealtorFromDb(int id) {
-        Realtor realtor = realtorService.getRealtorById(id);
-
-        assertNotNull(realtor);
-        assertNotEquals("", realtor.getFirstName());
-        assertNotEquals("", realtor.getLastName());
-        assertNotEquals("", realtor.getPhoneNumber());
-        assertNotEquals("", realtor.getEmail());
-        assertNotEquals("", realtor.getPassword());
-        assertNotEquals("", realtor.getCompany());
-        assertNotNull(realtor.getManagedListings());
-    }
-
-    @Test
-    @Rollback
-    void givenRealtor_whenAddRealtor_thenAddRealtorToDb() {
-        Set<Listing> managedListings = new HashSet<>();
-        Realtor testRealtor = new Realtor(
-                0,
-                "Junit",
-                "Test",
-                "777-777-7777",
-                "junit@test.com",
-                "Password!",
-                null,
-                managedListings
-        );
-
-        realtorService.addRealtor(testRealtor);
-        assertNotEquals(0, testRealtor.getRealtorId());
-    }
-
-    @Test
-    @Rollback
-    void givenRealtor_whenUpdateRealtor_thenUpdateRealtorInDb() {
-        Set<Listing> managedListings = new HashSet<>();
-        Realtor newRealtor = new Realtor(
-                1,
-                "Junit",
-                "Test",
-                "777-777-7777",
-                "junit@test.com",
-                "Password!",
-                null,
-                managedListings
-        );
-
-        Realtor oldRealtor = realtorService.getRealtorById(newRealtor.getRealtorId());
-
-        realtorService.updateRealtor(newRealtor);
-        assertEquals(1, newRealtor.getRealtorId());
-        assertNotEquals(oldRealtor, newRealtor);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @Rollback
-    void givenRealtorId_whenDeleteRealtor_thenDeleteRealtorInDb(int id) {
-        realtorService.deleteRealtor(id);
-        Optional<Realtor> output = realtorRepo.findById(id);
-        assertFalse(output.isPresent());
-    }
-
-    @Test
-    void givenEmail_whenFindByEmail_thenGetRealtor() {
-        String email = "realtor1@gmail.com";
-        Realtor output = realtorService.getRealtorByEmail(email);
-        assertEquals(1, output.getRealtorId());
-    }
-
-    @Test
-    void givenEmailandPass_whenLogin_thenClientLogin() {
-        String email = "realtor1@gmail.com";
-        String password = "Password!";
-
-        assertTrue(realtorService.realtorLogin(email, password));
-    }
-
-    @Test
-    void givenWrongPass_whenLogin_thenFailClientLogin() {
-        String email = "email1@gmail.com";
-        String password = "Password!!!";
-
-        assertFalse(realtorService.realtorLogin(email, password));
-    }
-
-    @Test
-    void givenJSON_whenAddClient_thenAddClient() throws JsonProcessingException {
-        String jsonString = "{" +
-                "\"realtorId\":\"0\"," +
-                "\"firstName\":\"Fake\"," +
-                "\"lastName\":\"Person\"," +
-                "\"email\":\"realtor4@gmail.com\"," +
-                "\"phoneNumber\":\"999-888-7777\"," +
-                "\"password\":\"Password!\"" +
-                "}";
-
-        Realtor output = realtorService.realtorRegistration(jsonString);
-        assertEquals("Fake", output.getFirstName());
-        assertNotEquals(0, output.getRealtorId());
-    }
+    // @Autowired
+    // RealtorService realtorService;
+    //
+    // @Autowired
+    // RealtorRepo realtorRepo;
+    //
+    // @Test
+    // void givenNothing_whenGetAllRealtors_thenGetAllRealtorsFromDb() {
+    //     List<Realtor> realtors = realtorService.getAllRealtors();
+    //     assertFalse(realtors.isEmpty());
+    // }
+    //
+    // @ParameterizedTest
+    // @ValueSource(ints = {1, 2, 3})
+    // void givenRealtorId_whenGetRealtorById_thenGetRealtorFromDb(int id) {
+    //     Realtor realtor = realtorService.getRealtorById(id);
+    //
+    //     assertNotNull(realtor);
+    //     assertNotEquals("", realtor.getFirstName());
+    //     assertNotEquals("", realtor.getLastName());
+    //     assertNotEquals("", realtor.getPhoneNumber());
+    //     assertNotEquals("", realtor.getEmail());
+    //     assertNotEquals("", realtor.getPassword());
+    //     assertNotEquals("", realtor.getCompany());
+    //     assertNotNull(realtor.getManagedListings());
+    // }
+    //
+    // @Test
+    // @Rollback
+    // void givenRealtor_whenAddRealtor_thenAddRealtorToDb() {
+    //     Set<Listing> managedListings = new HashSet<>();
+    //     Realtor testRealtor = new Realtor(
+    //             0,
+    //             "Junit",
+    //             "Test",
+    //             "777-777-7777",
+    //             "junit@test.com",
+    //             "Password!",
+    //             null,
+    //             managedListings
+    //     );
+    //
+    //     realtorService.addRealtor(testRealtor);
+    //     assertNotEquals(0, testRealtor.getRealtorId());
+    // }
+    //
+    // @Test
+    // @Rollback
+    // void givenRealtor_whenUpdateRealtor_thenUpdateRealtorInDb() {
+    //     Set<Listing> managedListings = new HashSet<>();
+    //     Realtor newRealtor = new Realtor(
+    //             1,
+    //             "Junit",
+    //             "Test",
+    //             "777-777-7777",
+    //             "junit@test.com",
+    //             "Password!",
+    //             null,
+    //             managedListings
+    //     );
+    //
+    //     Realtor oldRealtor = realtorService.getRealtorById(newRealtor.getRealtorId());
+    //
+    //     realtorService.updateRealtor(newRealtor);
+    //     assertEquals(1, newRealtor.getRealtorId());
+    //     assertNotEquals(oldRealtor, newRealtor);
+    // }
+    //
+    // @ParameterizedTest
+    // @ValueSource(ints = {1, 2, 3})
+    // @Rollback
+    // void givenRealtorId_whenDeleteRealtor_thenDeleteRealtorInDb(int id) {
+    //     realtorService.deleteRealtor(id);
+    //     Optional<Realtor> output = realtorRepo.findById(id);
+    //     assertFalse(output.isPresent());
+    // }
+    //
+    // @Test
+    // void givenEmail_whenFindByEmail_thenGetRealtor() {
+    //     String email = "realtor1@gmail.com";
+    //     Realtor output = realtorService.getRealtorByEmail(email);
+    //     assertEquals(1, output.getRealtorId());
+    // }
+    //
+    // @Test
+    // void givenEmailandPass_whenLogin_thenClientLogin() {
+    //     String email = "realtor1@gmail.com";
+    //     String password = "Password!";
+    //
+    //     assertTrue(realtorService.realtorLogin(email, password));
+    // }
+    //
+    // @Test
+    // void givenWrongPass_whenLogin_thenFailClientLogin() {
+    //     String email = "email1@gmail.com";
+    //     String password = "Password!!!";
+    //
+    //     assertFalse(realtorService.realtorLogin(email, password));
+    // }
+    //
+    // @Test
+    // void givenJSON_whenAddClient_thenAddClient() throws JsonProcessingException {
+    //     String jsonString = "{" +
+    //             "\"realtorId\":\"0\"," +
+    //             "\"firstName\":\"Fake\"," +
+    //             "\"lastName\":\"Person\"," +
+    //             "\"email\":\"realtor4@gmail.com\"," +
+    //             "\"phoneNumber\":\"999-888-7777\"," +
+    //             "\"password\":\"Password!\"" +
+    //             "}";
+    //
+    //     Realtor output = realtorService.realtorRegistration(jsonString);
+    //     assertEquals("Fake", output.getFirstName());
+    //     assertNotEquals(0, output.getRealtorId());
+    // }
 }

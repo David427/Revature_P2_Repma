@@ -43,4 +43,34 @@ public class ListingServiceImpl implements ListingService {
             return false;
         }
     }
+
+    @Override
+    public List<Listing> findByBedrooms(int bedrooms){
+        return listingRepo.findByBedrooms(bedrooms);
+    }
+
+    @Override
+    public List<Listing> findByAddress(String address){
+        return listingRepo.findByAddress(address);
+    }
+
+    @Override
+    public List<Listing> getLessThanPrice(double price){
+        return listingRepo.getLessThanPrice(price);
+    }
+
+    @Override
+    public List<Listing> getGreaterThanPrice(double price){
+        return listingRepo.getGreaterThanPrice(price);
+    }
+
+    @Override
+    public List<Listing> getBetweenPrice( double lowPrice, double highPrice){
+        return listingRepo.getBetweenPrice(lowPrice, highPrice);
+    }
+
+    @Override
+    public List<Listing> getGreaterThanSquareFeet(int squareFt){
+        return listingRepo.getGreaterThanSquareFeet(squareFt);
+    }
 }

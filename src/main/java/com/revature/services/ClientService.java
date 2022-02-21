@@ -1,6 +1,5 @@
 package com.revature.services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revature.models.Appointment;
 import com.revature.models.Client;
 import com.revature.models.Listing;
@@ -19,9 +18,8 @@ public interface ClientService {
     Client getClientByEmail(String email);
 
     List<Appointment> getApptsByClient(int id);
-
     Set<Listing> getSavedListings(int id);
+    public Client clientLogin(String email, String pass);
 
-    public boolean clientLogin(String email, String pass);
-    public Client clientRegistration(String jsonString) throws JsonProcessingException;
+    Client clientRegistration(Client client);
 }

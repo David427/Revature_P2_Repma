@@ -2,14 +2,13 @@ package com.revature.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.models.Listing;
+import com.revature.models.Client;
 import com.revature.models.Realtor;
 import com.revature.repositories.RealtorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -57,14 +56,18 @@ public class RealtorServiceImpl implements RealtorService {
     }
 
     @Override
-    public boolean realtorLogin(String email, String pass) {
+    public Realtor realtorLogin(String email, String pass) {
         Realtor r;
 
         if (getRealtorByEmail(email) != null) {
             r = getRealtorByEmail(email);
-            return r.getPassword().equals(pass);
+            if (r.getPassword().equals(pass)) {
+                return r;
+            } else {
+                return new Realtor();
+            }
         }
-        return false;
+        return new Realtor();
     }
 
     @Override

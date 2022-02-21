@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.Client;
 import com.revature.models.Realtor;
 import com.revature.services.RealtorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class RealtorController {
     }
 
     @PostMapping(value = "", consumes = "application/json", produces = "application/json")
-    public void addRealtor(@RequestBody Realtor r){
+    public void addRealtor(@RequestBody Realtor r) {
         realtorService.addRealtor(r);
     }
 
@@ -46,6 +47,14 @@ public class RealtorController {
     public ResponseEntity<Realtor> deleteRealtor(@PathVariable("realtor_id") Integer id){
         boolean success = realtorService.deleteRealtor(id);
         return new ResponseEntity<>((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );
+    }
+
+    @PostMapping(value = "/Login", consumes = "application/json", produces = "application/json")
+    public Realtor realtorLogin(@RequestBody Realtor r) {
+        System.out.println(r);
+        String email = r.getEmail();
+        String pass = r.getPassword();
+        return realtorService.realtorLogin(email, pass);
     }
 
 }

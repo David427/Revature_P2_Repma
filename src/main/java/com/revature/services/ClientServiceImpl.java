@@ -1,7 +1,5 @@
 package com.revature.services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Appointment;
 import com.revature.models.Client;
 import com.revature.models.Listing;
@@ -71,25 +69,23 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public boolean clientLogin(String email, String pass) {
+    public Client clientLogin(String email, String pass) {
         Client c;
 
         if (getClientByEmail(email) != null) {
             c = getClientByEmail(email);
-            return c.getPassword().equals(pass);
+            if (c.getPassword().equals(pass)) {
+                return c;
+            } else {
+                return new Client();
+            }
         }
-        return false;
+        return new Client();
     }
 
     @Override
-    public Client clientRegistration(String jsonString) throws JsonProcessingException {
-
-        Client jsonObject = new Client();
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        jsonObject = objectMapper.readValue(jsonString, Client.class);
-
-        addClient(jsonObject);
-        return jsonObject;
+    public Client clientRegistration(Client client) {
+        addClient(client);
+        return client;
     }
 }
