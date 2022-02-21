@@ -12,6 +12,7 @@
 	<artifactId>Repma</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Repma</name>
+	<packaging>jar</packaging>
 	<description>Real Estate Property Management App (Revature Project2)</description>
 	<properties>
 		<java.version>1.8</java.version>
