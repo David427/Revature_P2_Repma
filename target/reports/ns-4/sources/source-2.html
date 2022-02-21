@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ClientServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.revature.services</a>
+</div>
+
+<h1>Coverage Summary for Class: ClientServiceImpl (com.revature.services)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ClientServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (5/10)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$5ihXvFUR</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$HdW6n65G</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$jeoPFdu9</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$KRu2lFFi</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$qtWEW901</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$uxLTzZ9F</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1190509062$auxiliary$x3sAs4Ry</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$6qj7UYqE</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$C2zQLBwE</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$fdmlOBht</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$niEUXdbU</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$O7DdPMfr</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$UNnpFt3R</td>
+  </tr>
+  <tr>
+    <td class="name">ClientServiceImpl$MockitoMock$1530046509$auxiliary$YuHSY6aR</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (5/10)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.services;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">4</i>&nbsp;import com.revature.repositories.ClientRepo;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.dao.EmptyResultDataAccessException;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;@Service
+<b class="fc"><i class="no-highlight">12</i>&nbsp;public class ClientServiceImpl implements ClientService {</b>
+<i class="no-highlight">13</i>&nbsp;    @Autowired
+<i class="no-highlight">14</i>&nbsp;    ClientRepo clientRepo;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    @Override
+<i class="no-highlight">17</i>&nbsp;    public void addClient(Client c) {
+<b class="fc"><i class="no-highlight">18</i>&nbsp;        clientRepo.save(c);</b>
+<i class="no-highlight">19</i>&nbsp;    }
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Override
+<i class="no-highlight">22</i>&nbsp;    public Client getClientById(int id) {
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        return clientRepo.findById(id).orElse(new Client());</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Override
+<i class="no-highlight">27</i>&nbsp;    public List&lt;Client&gt; getAllClients() {
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        return (List&lt;Client&gt;) clientRepo.findAll();</b>
+<i class="no-highlight">29</i>&nbsp;    }
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    @Override
+<i class="no-highlight">32</i>&nbsp;    public void updateClient(Client change) {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        clientRepo.save(change);</b>
+<i class="no-highlight">34</i>&nbsp;    }
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    @Override
+<i class="no-highlight">37</i>&nbsp;    public boolean deleteClient(int id) {
+<i class="no-highlight">38</i>&nbsp;        try {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;            clientRepo.deleteById(id);</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;            return true;</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        } catch (IllegalArgumentException | EmptyResultDataAccessException e) {</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;            return false;</b>
+<i class="no-highlight">44</i>&nbsp;        }
+<i class="no-highlight">45</i>&nbsp;    }
+<i class="no-highlight">46</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-02-19 18:04</div>
+</div>
+</body>
+</html>

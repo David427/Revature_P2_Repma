@@ -1,0 +1,138 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RepmaApplication</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.revature.app</a>
+</div>
+
+<h1>Coverage Summary for Class: RepmaApplication (com.revature.app)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RepmaApplication</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">RepmaApplication$$EnhancerBySpringCGLIB$$891d320f</td>
+  </tr>
+  <tr>
+    <td class="name">RepmaApplication$$EnhancerBySpringCGLIB$$9b7d5c2d</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.app;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.revature.services.ClientService;
+<i class="no-highlight">4</i>&nbsp;import com.revature.services.ClientServiceImpl;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.boot.SpringApplication;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.boot.autoconfigure.SpringBootApplication;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.boot.autoconfigure.domain.EntityScan;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;@SpringBootApplication(scanBasePackages = &quot;com.revature&quot;)
+<i class="no-highlight">12</i>&nbsp;@EntityScan(&quot;com.revature.models&quot;)
+<i class="no-highlight">13</i>&nbsp;@EnableJpaRepositories(&quot;com.revature.repositories&quot;)
+<b class="fc"><i class="no-highlight">14</i>&nbsp;public class RepmaApplication {</b>
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;	public static void main(String[] args) {
+<b class="nc"><i class="no-highlight">17</i>&nbsp;		SpringApplication.run(RepmaApplication.class, args);</b>
+<i class="no-highlight">18</i>&nbsp;	}
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-02-19 18:04</div>
+</div>
+</body>
+</html>
