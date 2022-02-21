@@ -45,6 +45,11 @@ public class ListingServiceImpl implements ListingService {
     }
 
     @Override
+    public List<Listing> findByBathrooms(int bathrooms){
+        return listingRepo.findByBedrooms(bathrooms);
+    }
+
+    @Override
     public List<Listing> findByBedrooms(int bedrooms){
         return listingRepo.findByBedrooms(bedrooms);
     }
@@ -64,13 +69,13 @@ public class ListingServiceImpl implements ListingService {
         return listingRepo.getGreaterThanPrice(price);
     }
 
-    @Override
-    public List<Listing> getBetweenPrice( double lowPrice, double highPrice){
-        return listingRepo.getBetweenPrice(lowPrice, highPrice);
-    }
-
-    @Override
-    public List<Listing> getGreaterThanSquareFeet(int squareFt){
-        return listingRepo.getGreaterThanSquareFeet(squareFt);
-    }
+    // @Override
+    // public List<Listing> getBetweenPrice( double lowPrice, double highPrice){
+    //     return listingRepo.getBetweenPrice(lowPrice, highPrice);
+    // }
+    //
+    // @Override
+    // public List<Listing> getGreaterThanSquareFeet(int squareFt){
+    //     return listingRepo.getGreaterThanSquareFeet(squareFt);
+    // }
 }

@@ -28,23 +28,15 @@ public class ClientController {
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    // @PostMapping(name = "/Register", consumes = "application/json", produces = "application/json")
-    // @ResponseStatus(HttpStatus.CREATED)
-    // public Client clientRegistration(@RequestBody Client client) {
-    //     return clientService.clientRegistration(client);
-    // }
-
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
     public void updateClient(@PathVariable("id") int id, @RequestBody Client c){
         c.setClientId(id);
         clientService.updateClient(c);
     }
 
-    @PostMapping(value = "/Register", consumes = "application/json", produces = "application/json")
-    public void addClient(@RequestBody Client c) {
-
-        // System.out.println(c);
-        clientService.addClient(c);
+    @PostMapping(value = "/register", consumes = "application/json", produces = "application/json")
+    public Client addClient(@RequestBody Client c) {
+        return clientService.addClient(c);
     }
 
     @PostMapping(value = "/Login", consumes = "application/json", produces = "application/json")
@@ -59,6 +51,6 @@ public class ClientController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Client> deleteClient(@PathVariable("id") Integer id){
         boolean success = clientService.deleteClient(id);
-        return new ResponseEntity<>((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );
+        return new ResponseEntity<>((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 }

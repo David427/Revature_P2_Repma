@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface ClientService {
 
-    public void addClient(Client c);
+    public Client addClient(Client c);
     public Client getClientById(int id);
     public List<Client> getAllClients();
     public void updateClient(Client change);

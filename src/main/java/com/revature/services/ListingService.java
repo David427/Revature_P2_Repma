@@ -13,10 +13,11 @@ public interface ListingService {
     public boolean deleteListing(int id);
 
     List<Listing> findByBedrooms(int bedrooms);
+    List<Listing> findByBathrooms(int bathrooms);
     List<Listing> findByAddress(String address);
     List<Listing> getLessThanPrice(double price);
     List<Listing> getGreaterThanPrice(double price);
-    List<Listing> getBetweenPrice( double lowPrice, double highPrice);
-    List<Listing> getGreaterThanSquareFeet(int squareFt);
+    // List<Listing> getBetweenPrice( double lowPrice, double highPrice);
+    // List<Listing> getGreaterThanSquareFeet(int squareFt);
 
 }

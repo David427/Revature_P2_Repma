@@ -22,8 +22,8 @@ public class ClientServiceImpl implements ClientService {
     AppointmentRepo appointmentRepo;
 
     @Override
-    public void addClient(Client c) {
-        clientRepo.save(c);
+    public Client addClient(Client c) {
+        return clientRepo.save(c);
     }
 
     @Override
