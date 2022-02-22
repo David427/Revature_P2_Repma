@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AppointmentService {
 
-    public void addAppointment(Appointment a);
+    public Appointment addAppointment(Appointment a);
     public Appointment getAppointmentById(int id);
     public List<Appointment> getAllAppointmentsByClient(int id);
     public List<Appointment> getAllAppointmentsByListing(int id);

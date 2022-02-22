@@ -3,7 +3,6 @@ package com.revature.services;
 import com.revature.models.Appointment;
 import com.revature.repositories.AppointmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +13,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     AppointmentRepo appointmentRepo;
 
     @Override
-    public void addAppointment(Appointment c) {
-        appointmentRepo.save(c);
+    public Appointment addAppointment(Appointment appt) {
+        return appointmentRepo.save(appt);
     }
 
     @Override
