@@ -94,28 +94,22 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">19</i>&nbsp;    @Autowired
 <i class="no-highlight">20</i>&nbsp;    private AppointmentService appointmentService;
 <i class="no-highlight">21</i>&nbsp;
-<i class="no-highlight">22</i>&nbsp;    // @GetMapping(&quot;/{client_id}&quot;)
-<i class="no-highlight">23</i>&nbsp;    // public List&lt;Appointment&gt; getAllAppointmentsByClient(@PathVariable(&quot;client_id&quot;) Integer id){
-<i class="no-highlight">24</i>&nbsp;    //     return appointmentService.getAllAppointmentsByClient(id);
-<i class="no-highlight">25</i>&nbsp;    // }
-<i class="no-highlight">26</i>&nbsp;
-<i class="no-highlight">27</i>&nbsp;    @GetMapping(value = &quot;/{appt_id}&quot;)
-<i class="no-highlight">28</i>&nbsp;    public ResponseEntity&lt;Appointment&gt; getAppt(@PathVariable(&quot;appt_id&quot;) Integer id){
-<b class="nc"><i class="no-highlight">29</i>&nbsp;        Appointment appointments = appointmentService.getAppointmentById(id);</b>
-<i class="no-highlight">30</i>&nbsp;
-<b class="nc"><i class="no-highlight">31</i>&nbsp;        if (appointments.getListingId() != 0) return new ResponseEntity&lt;Appointment&gt;(appointments, HttpStatus.OK);</b>
-<b class="nc"><i class="no-highlight">32</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
-<i class="no-highlight">33</i>&nbsp;    }
-<i class="no-highlight">34</i>&nbsp;
-<i class="no-highlight">35</i>&nbsp;    //@Authorized
-<i class="no-highlight">36</i>&nbsp;    @DeleteMapping(value = &quot;/{appt_id}&quot; )
-<i class="no-highlight">37</i>&nbsp;    public ResponseEntity&lt;Client&gt; deleteAppointment(@PathVariable(&quot;appt_id&quot;) Integer id){
-<b class="nc"><i class="no-highlight">38</i>&nbsp;        boolean check = appointmentService.deleteAppointment(id);</b>
-<b class="nc"><i class="no-highlight">39</i>&nbsp;        return new ResponseEntity&lt;&gt;((check) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);</b>
-<i class="no-highlight">40</i>&nbsp;    }
-<i class="no-highlight">41</i>&nbsp;
-<i class="no-highlight">42</i>&nbsp;
-<i class="no-highlight">43</i>&nbsp;}
+<i class="no-highlight">22</i>&nbsp;    @GetMapping(value = &quot;/{appt_id}&quot;)
+<i class="no-highlight">23</i>&nbsp;    public ResponseEntity&lt;Appointment&gt; getAppt(@PathVariable(&quot;appt_id&quot;) Integer id){
+<b class="nc"><i class="no-highlight">24</i>&nbsp;        Appointment appointments = appointmentService.getAppointmentById(id);</b>
+<i class="no-highlight">25</i>&nbsp;
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        if (appointments.getListingId() != 0) return new ResponseEntity&lt;Appointment&gt;(appointments, HttpStatus.OK);</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    //@Authorized
+<i class="no-highlight">31</i>&nbsp;    @DeleteMapping(value = &quot;/{appt_id}&quot;)
+<i class="no-highlight">32</i>&nbsp;    public ResponseEntity&lt;Client&gt; deleteAppointment(@PathVariable(&quot;appt_id&quot;) Integer id){
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        boolean check = appointmentService.deleteAppointment(id);</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        return new ResponseEntity&lt;&gt;((check) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);</b>
+<i class="no-highlight">35</i>&nbsp;    }
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -142,7 +136,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

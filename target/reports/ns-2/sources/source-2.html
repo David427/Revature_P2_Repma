@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    20%
+    16.7%
   </span>
   <span class="absValue">
-    (1/5)
+    (1/6)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    11.1%
+    7.7%
   </span>
   <span class="absValue">
-    (1/9)
+    (1/13)
   </span>
 </td>
 </tr>
@@ -75,46 +75,60 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.controllers;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
-<i class="no-highlight">4</i>&nbsp;import com.revature.services.ClientService;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
-<i class="no-highlight">6</i>&nbsp;import org.springframework.http.HttpStatus;
-<i class="no-highlight">7</i>&nbsp;import org.springframework.http.ResponseEntity;
-<i class="no-highlight">8</i>&nbsp;import org.springframework.web.bind.annotation.*;
-<i class="no-highlight">9</i>&nbsp;
-<i class="no-highlight">10</i>&nbsp;@CrossOrigin
-<i class="no-highlight">11</i>&nbsp;@RestController
-<i class="no-highlight">12</i>&nbsp;@RequestMapping(&quot;/profile&quot;)
-<b class="fc"><i class="no-highlight">13</i>&nbsp;public class ClientController {</b>
-<i class="no-highlight">14</i>&nbsp;    @Autowired
-<i class="no-highlight">15</i>&nbsp;    ClientService clientService;
-<i class="no-highlight">16</i>&nbsp;
-<i class="no-highlight">17</i>&nbsp;    @GetMapping(&quot;/{id}&quot;)
-<i class="no-highlight">18</i>&nbsp;    public ResponseEntity&lt;Client&gt; getClient(@PathVariable(&quot;id&quot;) String id) {
-<b class="nc"><i class="no-highlight">19</i>&nbsp;        Client c = clientService.getClientById(Integer.parseInt(id));</b>
-<i class="no-highlight">20</i>&nbsp;
-<b class="nc"><i class="no-highlight">21</i>&nbsp;        if (c.getClientId() != 0) return new ResponseEntity&lt;Client&gt;(c, HttpStatus.OK);</b>
-<b class="nc"><i class="no-highlight">22</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
-<i class="no-highlight">23</i>&nbsp;    }
-<i class="no-highlight">24</i>&nbsp;
-<i class="no-highlight">25</i>&nbsp;    @PutMapping(value = &quot;/{id}&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
-<i class="no-highlight">26</i>&nbsp;    public void updateClient(@PathVariable(&quot;id&quot;) int id, @RequestBody Client c){
-<b class="nc"><i class="no-highlight">27</i>&nbsp;        c.setClientId(id);</b>
-<b class="nc"><i class="no-highlight">28</i>&nbsp;        clientService.updateClient(c);</b>
+<i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
+<i class="no-highlight">4</i>&nbsp;import com.fasterxml.jackson.databind.ObjectMapper;
+<i class="no-highlight">5</i>&nbsp;import com.revature.models.Appointment;
+<i class="no-highlight">6</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">7</i>&nbsp;import com.revature.services.ClientService;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.http.HttpStatus;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i class="no-highlight">11</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i class="no-highlight">14</i>&nbsp;import java.util.List;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;@CrossOrigin
+<i class="no-highlight">17</i>&nbsp;@RestController
+<b class="fc"><i class="no-highlight">18</i>&nbsp;public class ClientController {</b>
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;    @Autowired
+<i class="no-highlight">21</i>&nbsp;    ClientService clientService;
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;    @GetMapping(&quot;profile/{id}&quot;)
+<i class="no-highlight">24</i>&nbsp;    public ResponseEntity&lt;Client&gt; getClient(@PathVariable(&quot;id&quot;) String id) {
+<b class="nc"><i class="no-highlight">25</i>&nbsp;        Client c = clientService.getClientById(Integer.parseInt(id));</b>
+<i class="no-highlight">26</i>&nbsp;
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        if (c.getClientId() != 0) return new ResponseEntity&lt;Client&gt;(c, HttpStatus.OK);</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
 <i class="no-highlight">29</i>&nbsp;    }
 <i class="no-highlight">30</i>&nbsp;
-<i class="no-highlight">31</i>&nbsp;    @PostMapping(value = &quot;&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
-<i class="no-highlight">32</i>&nbsp;    public void addClient(@RequestBody Client c){
-<b class="nc"><i class="no-highlight">33</i>&nbsp;        clientService.addClient(c);</b>
-<i class="no-highlight">34</i>&nbsp;    }
-<i class="no-highlight">35</i>&nbsp;
-<i class="no-highlight">36</i>&nbsp;    // @Authorized
-<i class="no-highlight">37</i>&nbsp;    @DeleteMapping(value = &quot;/{id}&quot;)
-<i class="no-highlight">38</i>&nbsp;    public ResponseEntity&lt;Client&gt; deleteClient(@PathVariable(&quot;id&quot;) Integer id){
-<b class="nc"><i class="no-highlight">39</i>&nbsp;        boolean success = clientService.deleteClient(id);</b>
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        return new ResponseEntity&lt;&gt;((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );</b>
-<i class="no-highlight">41</i>&nbsp;    }
-<i class="no-highlight">42</i>&nbsp;}
+<i class="no-highlight">31</i>&nbsp;    @PutMapping(value = &quot;profile/{id}&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">32</i>&nbsp;    public void updateClient(@PathVariable(&quot;id&quot;) int id, @RequestBody Client c){
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        c.setClientId(id);</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        clientService.updateClient(c);</b>
+<i class="no-highlight">35</i>&nbsp;    }
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    @PostMapping(value = &quot;/register&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">38</i>&nbsp;    public Client addClient(@RequestBody Client c) {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        return clientService.addClient(c);</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    @PostMapping(value = &quot;/Login&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">43</i>&nbsp;    public Client clientLogin(@RequestBody Client c) {
+<b class="nc"><i class="no-highlight">44</i>&nbsp;        System.out.println(c);</b>
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        String email = c.getEmail();</b>
+<b class="nc"><i class="no-highlight">46</i>&nbsp;        String pass = c.getPassword();</b>
+<b class="nc"><i class="no-highlight">47</i>&nbsp;        return clientService.clientLogin(email, pass);</b>
+<i class="no-highlight">48</i>&nbsp;    }
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    // @Authorized
+<i class="no-highlight">51</i>&nbsp;    @DeleteMapping(value = &quot;/{id}&quot;)
+<i class="no-highlight">52</i>&nbsp;    public ResponseEntity&lt;Client&gt; deleteClient(@PathVariable(&quot;id&quot;) Integer id){
+<b class="nc"><i class="no-highlight">53</i>&nbsp;        boolean success = clientService.deleteClient(id);</b>
+<b class="nc"><i class="no-highlight">54</i>&nbsp;        return new ResponseEntity&lt;&gt;((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);</b>
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -141,7 +155,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    16.7%
+    9.1%
   </span>
   <span class="absValue">
-    (1/6)
+    (1/11)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    10%
+    3.2%
   </span>
   <span class="absValue">
-    (1/10)
+    (1/31)
   </span>
 </td>
 </tr>
@@ -75,55 +75,102 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.controllers;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Listing;
-<i class="no-highlight">4</i>&nbsp;import com.revature.services.ListingService;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
-<i class="no-highlight">6</i>&nbsp;import org.springframework.http.HttpStatus;
-<i class="no-highlight">7</i>&nbsp;import org.springframework.http.ResponseEntity;
-<i class="no-highlight">8</i>&nbsp;import org.springframework.web.bind.annotation.*;
-<i class="no-highlight">9</i>&nbsp;
-<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">4</i>&nbsp;import com.revature.models.Listing;
+<i class="no-highlight">5</i>&nbsp;import com.revature.services.ClientService;
+<i class="no-highlight">6</i>&nbsp;import com.revature.services.ListingService;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.http.HttpStatus;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.web.bind.annotation.*;
 <i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;@CrossOrigin
-<i class="no-highlight">13</i>&nbsp;@RestController
-<i class="no-highlight">14</i>&nbsp;@RequestMapping(&quot;/listings&quot;)
-<b class="fc"><i class="no-highlight">15</i>&nbsp;public class ListingController {</b>
-<i class="no-highlight">16</i>&nbsp;
-<i class="no-highlight">17</i>&nbsp;    @Autowired
-<i class="no-highlight">18</i>&nbsp;    private ListingService listingService;
-<i class="no-highlight">19</i>&nbsp;
-<i class="no-highlight">20</i>&nbsp;    @GetMapping
-<i class="no-highlight">21</i>&nbsp;    public List&lt;Listing&gt; getAllListings(){
-<b class="nc"><i class="no-highlight">22</i>&nbsp;        return listingService.getAllListings();</b>
-<i class="no-highlight">23</i>&nbsp;    }
-<i class="no-highlight">24</i>&nbsp;
-<i class="no-highlight">25</i>&nbsp;    @GetMapping(value = &quot;/{listing_id}&quot;)
-<i class="no-highlight">26</i>&nbsp;    public ResponseEntity&lt;Listing&gt; getListingById(@PathVariable(&quot;listing_id&quot;) Integer id) {
-<b class="nc"><i class="no-highlight">27</i>&nbsp;        Listing listing = listingService.getListingById(id);</b>
+<i class="no-highlight">12</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">13</i>&nbsp;import java.util.List;
+<i class="no-highlight">14</i>&nbsp;import java.util.Set;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;@CrossOrigin
+<i class="no-highlight">17</i>&nbsp;@RestController
+<i class="no-highlight">18</i>&nbsp;@RequestMapping(&quot;/listings&quot;)
+<b class="fc"><i class="no-highlight">19</i>&nbsp;public class ListingController {</b>
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Autowired
+<i class="no-highlight">22</i>&nbsp;    private ListingService listingService;
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    @GetMapping
+<i class="no-highlight">25</i>&nbsp;    public List&lt;Listing&gt; getAllListings(){
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        return listingService.getAllListings();</b>
+<i class="no-highlight">27</i>&nbsp;    }
 <i class="no-highlight">28</i>&nbsp;
-<b class="nc"><i class="no-highlight">29</i>&nbsp;        if (listing.getListingId() != 0) return new ResponseEntity&lt;Listing&gt;(listing, HttpStatus.OK);</b>
-<b class="nc"><i class="no-highlight">30</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
-<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;    @GetMapping(value = &quot;/{listing_id}&quot;)
+<i class="no-highlight">30</i>&nbsp;    public ResponseEntity&lt;Listing&gt; getListingById(@PathVariable(&quot;listing_id&quot;) Integer id) {
+<b class="nc"><i class="no-highlight">31</i>&nbsp;        Listing listing = listingService.getListingById(id);</b>
 <i class="no-highlight">32</i>&nbsp;
-<i class="no-highlight">33</i>&nbsp;    @PostMapping(value = &quot;&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
-<i class="no-highlight">34</i>&nbsp;    public void addListing(@RequestBody Listing listing){
-<b class="nc"><i class="no-highlight">35</i>&nbsp;        listingService.addListing(listing);</b>
-<i class="no-highlight">36</i>&nbsp;    }
-<i class="no-highlight">37</i>&nbsp;
-<i class="no-highlight">38</i>&nbsp;    @PutMapping(value = &quot;/{listing_id}&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
-<i class="no-highlight">39</i>&nbsp;    public Listing updateListing(@PathVariable(&quot;listing_id&quot;) int id, @RequestBody Listing l) {
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        l.setListingId(id);</b>
-<b class="nc"><i class="no-highlight">41</i>&nbsp;        return listingService.updateListing(l);</b>
-<i class="no-highlight">42</i>&nbsp;    }
-<i class="no-highlight">43</i>&nbsp;
-<i class="no-highlight">44</i>&nbsp;    // @Authorized
-<i class="no-highlight">45</i>&nbsp;    @DeleteMapping(value = &quot;{listing_id}&quot;)
-<i class="no-highlight">46</i>&nbsp;    public ResponseEntity&lt;Listing&gt; deleteListing(@PathVariable(&quot;listing_id&quot;) Integer id){
-<b class="nc"><i class="no-highlight">47</i>&nbsp;        boolean success = listingService.deleteListing(id);</b>
-<b class="nc"><i class="no-highlight">48</i>&nbsp;        return new ResponseEntity&lt;&gt;((success) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );</b>
-<i class="no-highlight">49</i>&nbsp;    }
-<i class="no-highlight">50</i>&nbsp;
-<i class="no-highlight">51</i>&nbsp;}
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        if (listing.getListingId() != 0) return new ResponseEntity&lt;Listing&gt;(listing, HttpStatus.OK);</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
+<i class="no-highlight">35</i>&nbsp;    }
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    @PostMapping(value = &quot;&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">38</i>&nbsp;    public Listing addListing(@RequestBody Listing listing) {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        System.out.println(listing);</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        return listingService.addListing(listing);</b>
+<i class="no-highlight">41</i>&nbsp;    }
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    @PutMapping(value = &quot;/{listing_id}&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">44</i>&nbsp;    public Listing updateListing(@PathVariable(&quot;listing_id&quot;) int id, @RequestBody Listing l) {
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        l.setListingId(id);</b>
+<b class="nc"><i class="no-highlight">46</i>&nbsp;        return listingService.updateListing(l);</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    // @Authorized
+<i class="no-highlight">50</i>&nbsp;    @DeleteMapping(value = &quot;{listing_id}&quot;)
+<i class="no-highlight">51</i>&nbsp;    public ResponseEntity&lt;Listing&gt; deleteListing(@PathVariable(&quot;listing_id&quot;) Integer id){
+<b class="nc"><i class="no-highlight">52</i>&nbsp;        boolean success = listingService.deleteListing(id);</b>
+<b class="nc"><i class="no-highlight">53</i>&nbsp;        return new ResponseEntity&lt;&gt;((success) ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );</b>
+<i class="no-highlight">54</i>&nbsp;    }
+<i class="no-highlight">55</i>&nbsp;
+<i class="no-highlight">56</i>&nbsp;    @GetMapping(value = &quot;/search/address&quot;)
+<i class="no-highlight">57</i>&nbsp;    public List&lt;Listing&gt; searchByAddress(@RequestParam String address) {
+<b class="nc"><i class="no-highlight">58</i>&nbsp;        System.out.println(address);</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;        System.out.println(listingService.findByAddress(address));</b>
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        return listingService.findByAddress(address);</b>
+<i class="no-highlight">61</i>&nbsp;    }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;    @GetMapping(value = &quot;/search/price&quot;)
+<i class="no-highlight">64</i>&nbsp;    public List&lt;Listing&gt; searchBelowPrice(@RequestParam String price) {
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        System.out.println(price);</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        double realPrice = Double.parseDouble(price);</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        System.out.println(listingService.getLessThanPrice(realPrice));</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;        return listingService.getLessThanPrice(realPrice);</b>
+<i class="no-highlight">69</i>&nbsp;    }
+<i class="no-highlight">70</i>&nbsp;
+<i class="no-highlight">71</i>&nbsp;    @GetMapping(value = &quot;/search/bathrooms&quot;)
+<i class="no-highlight">72</i>&nbsp;    public List&lt;Listing&gt; searchByBathrooms(@RequestParam String bathrooms) {
+<b class="nc"><i class="no-highlight">73</i>&nbsp;        System.out.println(bathrooms);</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        int brooms = Integer.parseInt(bathrooms);</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;        System.out.println(listingService.findByBathrooms(brooms));</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;        return listingService.findByBathrooms(brooms);</b>
+<i class="no-highlight">77</i>&nbsp;    }
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;    @GetMapping(value = &quot;/search/bedrooms&quot;)
+<i class="no-highlight">80</i>&nbsp;    public List&lt;Listing&gt; searchByBedrooms(@RequestParam String bedrooms) {
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        System.out.println(bedrooms);</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        int brooms = Integer.parseInt(bedrooms);</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;        System.out.println(listingService.findByBedrooms(brooms));</b>
+<b class="nc"><i class="no-highlight">84</i>&nbsp;        return listingService.findByBedrooms(brooms);</b>
+<i class="no-highlight">85</i>&nbsp;    }
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;    @PutMapping(value = &quot;/{id}&quot;)
+<i class="no-highlight">88</i>&nbsp;    public Client saveListing(@PathVariable(&quot;id&quot;) String id, @RequestBody Client c) {
+<b class="nc"><i class="no-highlight">89</i>&nbsp;        int listingId = Integer.parseInt(id);</b>
+<b class="nc"><i class="no-highlight">90</i>&nbsp;        Listing newSavedListing = listingService.getListingById(listingId);</b>
+<i class="no-highlight">91</i>&nbsp;
+<b class="nc"><i class="no-highlight">92</i>&nbsp;        Set&lt;Listing&gt; clientsListings = c.getSavedListings();</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;        clientsListings.add(newSavedListing);</b>
+<i class="no-highlight">94</i>&nbsp;
+<b class="nc"><i class="no-highlight">95</i>&nbsp;        return c;</b>
+<i class="no-highlight">96</i>&nbsp;    }
+<i class="no-highlight">97</i>&nbsp;
+<i class="no-highlight">98</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -150,7 +197,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

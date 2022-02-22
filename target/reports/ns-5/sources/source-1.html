@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > ClientRepo</title>
+  <title>Coverage Report > ListingRepo</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.revature.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: ClientRepo (com.revature.repositories)</h1>
+<h1>Coverage Summary for Class: ListingRepo (com.revature.repositories)</h1>
 
 <table class="coverageStats">
 
@@ -28,13 +28,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">ClientRepo$MockitoMock$88452706</td>
+    <td class="name">ListingRepo$MockitoMock$914274248</td>
   </tr>
   <tr>
-    <td class="name">ClientRepo$MockitoMock$88452706$auxiliary$IoPYo0nc</td>
+    <td class="name">ListingRepo$MockitoMock$914274248$auxiliary$D7f0t9F9</td>
   </tr>
   <tr>
-    <td class="name">ClientRepo$MockitoMock$88452706$auxiliary$WqLtRGVQ</td>
+    <td class="name">ListingRepo$MockitoMock$914274248$auxiliary$sDnNzJyL</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,15 +48,34 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.repositories;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
-<i class="no-highlight">4</i>&nbsp;import org.springframework.data.repository.CrudRepository;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.stereotype.Repository;
-<i class="no-highlight">6</i>&nbsp;
-<i class="no-highlight">7</i>&nbsp;@Repository
-<i class="no-highlight">8</i>&nbsp;public interface ClientRepo extends CrudRepository&lt;Client, Integer&gt; {
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Listing;
+<i class="no-highlight">4</i>&nbsp;import org.springframework.data.jpa.repository.Query;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.data.repository.CrudRepository;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.stereotype.Repository;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;import java.util.List;
 <i class="no-highlight">9</i>&nbsp;
-<i class="no-highlight">10</i>&nbsp;    //findByEmail
-<i class="no-highlight">11</i>&nbsp;}
+<i class="no-highlight">10</i>&nbsp;@Repository
+<i class="no-highlight">11</i>&nbsp;public interface ListingRepo extends CrudRepository&lt;Listing, Integer&gt; {
+<i class="no-highlight">12</i>&nbsp;    List&lt;Listing&gt; findByBedrooms(int bedrooms);
+<i class="no-highlight">13</i>&nbsp;    List&lt;Listing&gt; findByBathrooms(int squareFt);
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;    @Query(value = &quot;SELECT l from Listing l WHERE l.address LIKE &#39;%&#39;||:address||&#39;%&#39;&quot;)
+<i class="no-highlight">16</i>&nbsp;    List&lt;Listing&gt; findByAddress(String address);
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    // must use JPQL
+<i class="no-highlight">19</i>&nbsp;    @Query(value = &quot;SELECT l FROM Listing l WHERE l.price &lt;= :price&quot;)
+<i class="no-highlight">20</i>&nbsp;    List&lt;Listing&gt; getLessThanPrice(double price);
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @Query(value = &quot;SELECT l FROM Listing l WHERE l.price &gt;= :price&quot;)
+<i class="no-highlight">23</i>&nbsp;    List&lt;Listing&gt; getGreaterThanPrice(double price);
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;    // @Query(value = &quot;SELECT l FROM Listing l WHERE l.price BETWEEN :lowPrice AND :highPrice&quot;)
+<i class="no-highlight">26</i>&nbsp;    // List&lt;Listing&gt; getBetweenPrice( double lowPrice, double highPrice);
+<i class="no-highlight">27</i>&nbsp;
+<i class="no-highlight">28</i>&nbsp;    // @Query(value = &quot;SELECT l FROM Listing l WHERE l.squareFt &gt;= :squareFt&quot;)
+<i class="no-highlight">29</i>&nbsp;    // List&lt;Listing&gt; getGreaterThanSquareFeet(int squareFt);
+<i class="no-highlight">30</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -83,7 +102,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

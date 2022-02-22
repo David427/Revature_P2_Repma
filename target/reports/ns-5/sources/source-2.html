@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > ListingRepo</title>
+  <title>Coverage Report > ClientRepo</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.revature.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: ListingRepo (com.revature.repositories)</h1>
+<h1>Coverage Summary for Class: ClientRepo (com.revature.repositories)</h1>
 
 <table class="coverageStats">
 
@@ -28,13 +28,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">ListingRepo$MockitoMock$1023390119</td>
+    <td class="name">ClientRepo$MockitoMock$1346837019</td>
   </tr>
   <tr>
-    <td class="name">ListingRepo$MockitoMock$1023390119$auxiliary$MvXhRmHC</td>
+    <td class="name">ClientRepo$MockitoMock$1346837019$auxiliary$NmhfPhD5</td>
   </tr>
   <tr>
-    <td class="name">ListingRepo$MockitoMock$1023390119$auxiliary$XEZHZjSZ</td>
+    <td class="name">ClientRepo$MockitoMock$1346837019$auxiliary$ZYcV7w0P</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,13 +48,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.repositories;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Listing;
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
 <i class="no-highlight">4</i>&nbsp;import org.springframework.data.repository.CrudRepository;
 <i class="no-highlight">5</i>&nbsp;import org.springframework.stereotype.Repository;
 <i class="no-highlight">6</i>&nbsp;
 <i class="no-highlight">7</i>&nbsp;@Repository
-<i class="no-highlight">8</i>&nbsp;public interface ListingRepo extends CrudRepository&lt;Listing, Integer&gt; {
-<i class="no-highlight">9</i>&nbsp;}
+<i class="no-highlight">8</i>&nbsp;public interface ClientRepo extends CrudRepository&lt;Client, Integer&gt; {
+<i class="no-highlight">9</i>&nbsp;    Client findByEmail(String email);
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -81,7 +83,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

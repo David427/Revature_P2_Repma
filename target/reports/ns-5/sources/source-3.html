@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AppointmentRepo</title>
+  <title>Coverage Report > RealtorRepo</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.revature.repositories</a>
 </div>
 
-<h1>Coverage Summary for Class: AppointmentRepo (com.revature.repositories)</h1>
+<h1>Coverage Summary for Class: RealtorRepo (com.revature.repositories)</h1>
 
 <table class="coverageStats">
 
@@ -28,13 +28,13 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">AppointmentRepo$MockitoMock$1000577676</td>
+    <td class="name">RealtorRepo$MockitoMock$1647050894</td>
   </tr>
   <tr>
-    <td class="name">AppointmentRepo$MockitoMock$1000577676$auxiliary$0cldRzGh</td>
+    <td class="name">RealtorRepo$MockitoMock$1647050894$auxiliary$ewga2PaS</td>
   </tr>
   <tr>
-    <td class="name">AppointmentRepo$MockitoMock$1000577676$auxiliary$amkVyZe6</td>
+    <td class="name">RealtorRepo$MockitoMock$1647050894$auxiliary$QRKDeeUa</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -48,17 +48,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.repositories;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Appointment;
-<i class="no-highlight">4</i>&nbsp;import org.springframework.data.repository.CrudRepository;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.stereotype.Repository;
-<i class="no-highlight">6</i>&nbsp;
-<i class="no-highlight">7</i>&nbsp;import java.util.List;
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">4</i>&nbsp;import com.revature.models.Realtor;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.data.jpa.repository.Query;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.data.repository.CrudRepository;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.stereotype.Repository;
 <i class="no-highlight">8</i>&nbsp;
 <i class="no-highlight">9</i>&nbsp;@Repository
-<i class="no-highlight">10</i>&nbsp;public interface AppointmentRepo extends CrudRepository&lt;Appointment, Integer&gt; {
-<i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;    public List&lt;Appointment&gt; findAllByClientId(int id);
-<i class="no-highlight">13</i>&nbsp;    public List&lt;Appointment&gt; findAllByListingId(int id);
+<i class="no-highlight">10</i>&nbsp;public interface RealtorRepo extends CrudRepository&lt;Realtor, Integer&gt; {
+<i class="no-highlight">11</i>&nbsp;    Realtor findByEmail(String email);
+<i class="no-highlight">12</i>&nbsp;    Realtor findByFirstName(String firstName);
+<i class="no-highlight">13</i>&nbsp;    Realtor findByLastName(String lastName);
 <i class="no-highlight">14</i>&nbsp;
 <i class="no-highlight">15</i>&nbsp;}
 </div>
@@ -87,7 +87,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

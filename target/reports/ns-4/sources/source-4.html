@@ -23,9 +23,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <h1>Coverage Summary for Class: RealtorServiceImpl (com.revature.services)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -39,88 +42,30 @@ Current scope:     <a href="../../index.html">all classes</a>
   <td class="name">RealtorServiceImpl</td>
 <td class="coverageStat">
   <span class="percent">
-    83.3%
+    100%
   </span>
   <span class="absValue">
-    (5/6)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    100%
   </span>
   <span class="absValue">
-    (5/10)
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.8%
+  </span>
+  <span class="absValue">
+    (18/22)
   </span>
 </td>
 </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$2TklolF8</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$4TRZxEvf</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$dLDIo8D7</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$l1exiL4B</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$LS9SI7IA</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$mn7Y1kLN</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1167581699$auxiliary$vVzEFSo5</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$bkpu3D5L</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$gIjeNLDS</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$hZDvplBS</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$NXa9zL3M</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$PfGmUIJE</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$piFSvmVF</td>
-  </tr>
-  <tr>
-    <td class="name">RealtorServiceImpl$MockitoMock$1567055355$auxiliary$yRAQj9q9</td>
-  </tr>
-<tr>
-  <td class="name"><strong>Total</strong></td>
-<td class="coverageStat">
-  <span class="percent">
-    83.3%
-  </span>
-  <span class="absValue">
-    (5/6)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    50%
-  </span>
-  <span class="absValue">
-    (5/10)
-  </span>
-</td>
-</tr>
+
 </table>
 
 <br/>
@@ -130,50 +75,108 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.services;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Realtor;
-<i class="no-highlight">4</i>&nbsp;import com.revature.repositories.RealtorRepo;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
-<i class="no-highlight">6</i>&nbsp;import org.springframework.dao.EmptyResultDataAccessException;
-<i class="no-highlight">7</i>&nbsp;import org.springframework.stereotype.Service;
-<i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;import java.util.List;
-<i class="no-highlight">10</i>&nbsp;
-<i class="no-highlight">11</i>&nbsp;@Service
-<b class="fc"><i class="no-highlight">12</i>&nbsp;public class RealtorServiceImpl implements RealtorService {</b>
-<i class="no-highlight">13</i>&nbsp;    @Autowired
-<i class="no-highlight">14</i>&nbsp;    RealtorRepo realtorRepo;
-<i class="no-highlight">15</i>&nbsp;
-<i class="no-highlight">16</i>&nbsp;    @Override
-<i class="no-highlight">17</i>&nbsp;    public void addRealtor(Realtor r) {
-<b class="fc"><i class="no-highlight">18</i>&nbsp;        realtorRepo.save(r);</b>
-<i class="no-highlight">19</i>&nbsp;    }
-<i class="no-highlight">20</i>&nbsp;
-<i class="no-highlight">21</i>&nbsp;    @Override
-<i class="no-highlight">22</i>&nbsp;    public Realtor getRealtorById(int id) {
-<b class="fc"><i class="no-highlight">23</i>&nbsp;        return realtorRepo.findById(id).orElse(new Realtor());</b>
-<i class="no-highlight">24</i>&nbsp;    }
-<i class="no-highlight">25</i>&nbsp;
-<i class="no-highlight">26</i>&nbsp;    @Override
-<i class="no-highlight">27</i>&nbsp;    public List&lt;Realtor&gt; getAllRealtors() {
-<b class="fc"><i class="no-highlight">28</i>&nbsp;        return (List&lt;Realtor&gt;) realtorRepo.findAll();</b>
-<i class="no-highlight">29</i>&nbsp;    }
-<i class="no-highlight">30</i>&nbsp;
-<i class="no-highlight">31</i>&nbsp;    @Override
-<i class="no-highlight">32</i>&nbsp;    public Realtor updateRealtor(Realtor change) {
-<b class="fc"><i class="no-highlight">33</i>&nbsp;        return realtorRepo.save(change);</b>
-<i class="no-highlight">34</i>&nbsp;    }
-<i class="no-highlight">35</i>&nbsp;
-<i class="no-highlight">36</i>&nbsp;    @Override
-<i class="no-highlight">37</i>&nbsp;    public boolean deleteRealtor(int id) {
-<i class="no-highlight">38</i>&nbsp;        try {
-<b class="nc"><i class="no-highlight">39</i>&nbsp;            realtorRepo.deleteById(id);</b>
-<b class="nc"><i class="no-highlight">40</i>&nbsp;            return true;</b>
-<b class="nc"><i class="no-highlight">41</i>&nbsp;        } catch (IllegalArgumentException | EmptyResultDataAccessException e) {</b>
-<b class="nc"><i class="no-highlight">42</i>&nbsp;            e.printStackTrace();</b>
-<b class="nc"><i class="no-highlight">43</i>&nbsp;            return false;</b>
-<i class="no-highlight">44</i>&nbsp;        }
-<i class="no-highlight">45</i>&nbsp;    }
-<i class="no-highlight">46</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
+<i class="no-highlight">4</i>&nbsp;import com.fasterxml.jackson.databind.ObjectMapper;
+<i class="no-highlight">5</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">6</i>&nbsp;import com.revature.models.Realtor;
+<i class="no-highlight">7</i>&nbsp;import com.revature.repositories.RealtorRepo;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.dao.EmptyResultDataAccessException;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.List;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;@Service
+<b class="fc"><i class="no-highlight">15</i>&nbsp;public class RealtorServiceImpl implements RealtorService {</b>
+<i class="no-highlight">16</i>&nbsp;    @Autowired
+<i class="no-highlight">17</i>&nbsp;    RealtorRepo realtorRepo;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    @Autowired
+<i class="no-highlight">20</i>&nbsp;    ListingService listingService;
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @Override
+<i class="no-highlight">23</i>&nbsp;    public void addRealtor(Realtor r) {
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        realtorRepo.save(r);</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    @Override
+<i class="no-highlight">28</i>&nbsp;    public Realtor getRealtorById(int id) {
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        return realtorRepo.findById(id).orElse(new Realtor());</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @Override
+<i class="no-highlight">33</i>&nbsp;    public List&lt;Realtor&gt; getAllRealtors() {
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        return (List&lt;Realtor&gt;) realtorRepo.findAll();</b>
+<i class="no-highlight">35</i>&nbsp;    }
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    @Override
+<i class="no-highlight">38</i>&nbsp;    public Realtor updateRealtor(Realtor change) {
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        return realtorRepo.save(change);</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    @Override
+<i class="no-highlight">43</i>&nbsp;    public boolean deleteRealtor(int id) {
+<i class="no-highlight">44</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">45</i>&nbsp;            realtorRepo.deleteById(id);</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;            return true;</b>
+<b class="nc"><i class="no-highlight">47</i>&nbsp;        } catch (IllegalArgumentException | EmptyResultDataAccessException e) {</b>
+<b class="nc"><i class="no-highlight">48</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;            return false;</b>
+<i class="no-highlight">50</i>&nbsp;        }
+<i class="no-highlight">51</i>&nbsp;    }
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @Override
+<i class="no-highlight">54</i>&nbsp;    public Realtor getRealtorByEmail(String email) {
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        return realtorRepo.findByEmail(email);</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    @Override
+<i class="no-highlight">59</i>&nbsp;    public Realtor realtorLogin(String email, String pass) {
+<i class="no-highlight">60</i>&nbsp;        Realtor r;
+<i class="no-highlight">61</i>&nbsp;
+<b class="fc"><i class="no-highlight">62</i>&nbsp;        if (getRealtorByEmail(email) != null) {</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;            r = getRealtorByEmail(email);</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;            if (r.getPassword().equals(pass)) {</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;                return r;</b>
+<i class="no-highlight">66</i>&nbsp;            } else {
+<b class="nc"><i class="no-highlight">67</i>&nbsp;                return new Realtor();</b>
+<i class="no-highlight">68</i>&nbsp;            }
+<i class="no-highlight">69</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">70</i>&nbsp;        return new Realtor();</b>
+<i class="no-highlight">71</i>&nbsp;    }
+<i class="no-highlight">72</i>&nbsp;
+<i class="no-highlight">73</i>&nbsp;    @Override
+<i class="no-highlight">74</i>&nbsp;    public Realtor realtorRegistration(String jsonString) throws JsonProcessingException {
+<i class="no-highlight">75</i>&nbsp;
+<b class="fc"><i class="no-highlight">76</i>&nbsp;        Realtor jsonObject = new Realtor();</b>
+<b class="fc"><i class="no-highlight">77</i>&nbsp;        ObjectMapper objMapper = new ObjectMapper();</b>
+<i class="no-highlight">78</i>&nbsp;
+<b class="fc"><i class="no-highlight">79</i>&nbsp;        jsonObject = objMapper.readValue(jsonString, Realtor.class);</b>
+<i class="no-highlight">80</i>&nbsp;
+<b class="fc"><i class="no-highlight">81</i>&nbsp;        addRealtor(jsonObject);</b>
+<b class="fc"><i class="no-highlight">82</i>&nbsp;        return jsonObject;</b>
+<i class="no-highlight">83</i>&nbsp;    }
+<i class="no-highlight">84</i>&nbsp;
+<i class="no-highlight">85</i>&nbsp;    // @Override
+<i class="no-highlight">86</i>&nbsp;    // public Listing realtorAddListing(String jsonString) {
+<i class="no-highlight">87</i>&nbsp;    //     ObjectMapper mapper = new ObjectMapper();
+<i class="no-highlight">88</i>&nbsp;    //
+<i class="no-highlight">89</i>&nbsp;    //     try {
+<i class="no-highlight">90</i>&nbsp;    //         Listing jsonObject = mapper.readValue(jsonString, Listing.class);
+<i class="no-highlight">91</i>&nbsp;    //
+<i class="no-highlight">92</i>&nbsp;    //         listingService.addListing(jsonObject);
+<i class="no-highlight">93</i>&nbsp;    //         return jsonObject;
+<i class="no-highlight">94</i>&nbsp;    //     } catch (IOException e) {
+<i class="no-highlight">95</i>&nbsp;    //         e.printStackTrace();
+<i class="no-highlight">96</i>&nbsp;    //         return null;
+<i class="no-highlight">97</i>&nbsp;    //     }
+<i class="no-highlight">98</i>&nbsp;    // }
+<i class="no-highlight">99</i>&nbsp;    //
+<i class="no-highlight">100</i>&nbsp;    // @Override
+<i class="no-highlight">101</i>&nbsp;    // public Listing realtorUpdateListing(String jsonString) {
+<i class="no-highlight">102</i>&nbsp;    //     return null;
+<i class="no-highlight">103</i>&nbsp;    // }
+<i class="no-highlight">104</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -200,7 +203,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

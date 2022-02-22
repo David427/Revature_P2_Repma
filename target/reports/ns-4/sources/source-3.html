@@ -23,9 +23,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <h1>Coverage Summary for Class: ListingServiceImpl (com.revature.services)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -39,88 +42,30 @@ Current scope:     <a href="../../index.html">all classes</a>
   <td class="name">ListingServiceImpl</td>
 <td class="coverageStat">
   <span class="percent">
-    83.3%
+    100%
   </span>
   <span class="absValue">
-    (5/6)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    54.5%
   </span>
   <span class="absValue">
-    (5/10)
+    (6/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    46.7%
+  </span>
+  <span class="absValue">
+    (7/15)
   </span>
 </td>
 </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$briVcGav</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$j728flHl</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$krLlVg3f</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$RozRHw90</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$utndP7aS</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$VHlYyTax</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$1691594893$auxiliary$wv6C2NT0</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$bLlLqAU6</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$Bmg2i1Ah</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$L1LyhV2N</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$lzSCy2lV</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$TMWC4p8t</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$uh0YBLgL</td>
-  </tr>
-  <tr>
-    <td class="name">ListingServiceImpl$MockitoMock$763458657$auxiliary$YYtx4tw1</td>
-  </tr>
-<tr>
-  <td class="name"><strong>Total</strong></td>
-<td class="coverageStat">
-  <span class="percent">
-    83.3%
-  </span>
-  <span class="absValue">
-    (5/6)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    50%
-  </span>
-  <span class="absValue">
-    (5/10)
-  </span>
-</td>
-</tr>
+
 </table>
 
 <br/>
@@ -144,8 +89,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">14</i>&nbsp;    ListingRepo listingRepo;
 <i class="no-highlight">15</i>&nbsp;
 <i class="no-highlight">16</i>&nbsp;    @Override
-<i class="no-highlight">17</i>&nbsp;    public void addListing(Listing l) {
-<b class="fc"><i class="no-highlight">18</i>&nbsp;        listingRepo.save(l);</b>
+<i class="no-highlight">17</i>&nbsp;    public Listing addListing(Listing l) {
+<b class="fc"><i class="no-highlight">18</i>&nbsp;        return listingRepo.save(l);</b>
 <i class="no-highlight">19</i>&nbsp;    }
 <i class="no-highlight">20</i>&nbsp;
 <i class="no-highlight">21</i>&nbsp;    @Override
@@ -166,14 +111,49 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">36</i>&nbsp;    @Override
 <i class="no-highlight">37</i>&nbsp;    public boolean deleteListing(int id) {
 <i class="no-highlight">38</i>&nbsp;        try {
-<b class="nc"><i class="no-highlight">39</i>&nbsp;            listingRepo.deleteById(id);</b>
-<b class="nc"><i class="no-highlight">40</i>&nbsp;            return true;</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;            listingRepo.deleteById(id);</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;            return true;</b>
 <b class="nc"><i class="no-highlight">41</i>&nbsp;        } catch (IllegalArgumentException | EmptyResultDataAccessException e) {</b>
 <b class="nc"><i class="no-highlight">42</i>&nbsp;            e.printStackTrace();</b>
 <b class="nc"><i class="no-highlight">43</i>&nbsp;            return false;</b>
 <i class="no-highlight">44</i>&nbsp;        }
 <i class="no-highlight">45</i>&nbsp;    }
-<i class="no-highlight">46</i>&nbsp;}
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    @Override
+<i class="no-highlight">48</i>&nbsp;    public List&lt;Listing&gt; findByBathrooms(int bathrooms){
+<b class="nc"><i class="no-highlight">49</i>&nbsp;        return listingRepo.findByBedrooms(bathrooms);</b>
+<i class="no-highlight">50</i>&nbsp;    }
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    @Override
+<i class="no-highlight">53</i>&nbsp;    public List&lt;Listing&gt; findByBedrooms(int bedrooms){
+<b class="nc"><i class="no-highlight">54</i>&nbsp;        return listingRepo.findByBedrooms(bedrooms);</b>
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;
+<i class="no-highlight">57</i>&nbsp;    @Override
+<i class="no-highlight">58</i>&nbsp;    public List&lt;Listing&gt; findByAddress(String address){
+<b class="nc"><i class="no-highlight">59</i>&nbsp;        return listingRepo.findByAddress(address);</b>
+<i class="no-highlight">60</i>&nbsp;    }
+<i class="no-highlight">61</i>&nbsp;
+<i class="no-highlight">62</i>&nbsp;    @Override
+<i class="no-highlight">63</i>&nbsp;    public List&lt;Listing&gt; getLessThanPrice(double price){
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        return listingRepo.getLessThanPrice(price);</b>
+<i class="no-highlight">65</i>&nbsp;    }
+<i class="no-highlight">66</i>&nbsp;
+<i class="no-highlight">67</i>&nbsp;    @Override
+<i class="no-highlight">68</i>&nbsp;    public List&lt;Listing&gt; getGreaterThanPrice(double price){
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        return listingRepo.getGreaterThanPrice(price);</b>
+<i class="no-highlight">70</i>&nbsp;    }
+<i class="no-highlight">71</i>&nbsp;
+<i class="no-highlight">72</i>&nbsp;    // @Override
+<i class="no-highlight">73</i>&nbsp;    // public List&lt;Listing&gt; getBetweenPrice( double lowPrice, double highPrice){
+<i class="no-highlight">74</i>&nbsp;    //     return listingRepo.getBetweenPrice(lowPrice, highPrice);
+<i class="no-highlight">75</i>&nbsp;    // }
+<i class="no-highlight">76</i>&nbsp;    //
+<i class="no-highlight">77</i>&nbsp;    // @Override
+<i class="no-highlight">78</i>&nbsp;    // public List&lt;Listing&gt; getGreaterThanSquareFeet(int squareFt){
+<i class="no-highlight">79</i>&nbsp;    //     return listingRepo.getGreaterThanSquareFeet(squareFt);
+<i class="no-highlight">80</i>&nbsp;    // }
+<i class="no-highlight">81</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -200,7 +180,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

@@ -50,18 +50,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    16.7%
+    14.3%
   </span>
   <span class="absValue">
-    (1/6)
+    (1/7)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    10%
+    7.1%
   </span>
   <span class="absValue">
-    (1/10)
+    (1/14)
   </span>
 </td>
 </tr>
@@ -75,55 +75,64 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.controllers;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Realtor;
-<i class="no-highlight">4</i>&nbsp;import com.revature.services.RealtorService;
-<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
-<i class="no-highlight">6</i>&nbsp;import org.springframework.http.HttpStatus;
-<i class="no-highlight">7</i>&nbsp;import org.springframework.http.ResponseEntity;
-<i class="no-highlight">8</i>&nbsp;import org.springframework.web.bind.annotation.*;
-<i class="no-highlight">9</i>&nbsp;
-<i class="no-highlight">10</i>&nbsp;import java.util.List;
-<i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;@CrossOrigin
-<i class="no-highlight">13</i>&nbsp;@RestController
-<i class="no-highlight">14</i>&nbsp;@RequestMapping(&quot;/realtors&quot;)
-<b class="fc"><i class="no-highlight">15</i>&nbsp;public class RealtorController {</b>
-<i class="no-highlight">16</i>&nbsp;
-<i class="no-highlight">17</i>&nbsp;    @Autowired
-<i class="no-highlight">18</i>&nbsp;    private RealtorService realtorService;
-<i class="no-highlight">19</i>&nbsp;
-<i class="no-highlight">20</i>&nbsp;    @GetMapping
-<i class="no-highlight">21</i>&nbsp;    public List&lt;Realtor&gt; getAllRealtors(){
-<b class="nc"><i class="no-highlight">22</i>&nbsp;        return realtorService.getAllRealtors();</b>
-<i class="no-highlight">23</i>&nbsp;    }
-<i class="no-highlight">24</i>&nbsp;
-<i class="no-highlight">25</i>&nbsp;    @GetMapping(value = &quot;/{realtor_id}&quot;)
-<i class="no-highlight">26</i>&nbsp;    public ResponseEntity&lt;Realtor&gt; getRealtorById(@PathVariable(&quot;realtor_id&quot;) Integer id){
-<b class="nc"><i class="no-highlight">27</i>&nbsp;        Realtor r = realtorService.getRealtorById(id);</b>
-<i class="no-highlight">28</i>&nbsp;
-<b class="nc"><i class="no-highlight">29</i>&nbsp;        if (r.getRealtorId() != 0) return new ResponseEntity&lt;Realtor&gt;(r, HttpStatus.OK);</b>
-<b class="nc"><i class="no-highlight">30</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
-<i class="no-highlight">31</i>&nbsp;    }
-<i class="no-highlight">32</i>&nbsp;
-<i class="no-highlight">33</i>&nbsp;    @PostMapping(value = &quot;&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
-<i class="no-highlight">34</i>&nbsp;    public void addRealtor(@RequestBody Realtor r){
-<b class="nc"><i class="no-highlight">35</i>&nbsp;        realtorService.addRealtor(r);</b>
-<i class="no-highlight">36</i>&nbsp;    }
-<i class="no-highlight">37</i>&nbsp;
-<i class="no-highlight">38</i>&nbsp;    @PutMapping(value = &quot;/{realtor_id}&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
-<i class="no-highlight">39</i>&nbsp;    public Realtor updateRealtor(@PathVariable(&quot;realtor_id&quot;) int id, @RequestBody Realtor r){
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        r.setRealtorId(id);</b>
-<b class="nc"><i class="no-highlight">41</i>&nbsp;        return realtorService.updateRealtor(r);</b>
-<i class="no-highlight">42</i>&nbsp;    }
-<i class="no-highlight">43</i>&nbsp;
-<i class="no-highlight">44</i>&nbsp;    // @Authorized
-<i class="no-highlight">45</i>&nbsp;    @DeleteMapping(value = &quot;/{realtor_id}&quot;)
-<i class="no-highlight">46</i>&nbsp;    public ResponseEntity&lt;Realtor&gt; deleteRealtor(@PathVariable(&quot;realtor_id&quot;) Integer id){
-<b class="nc"><i class="no-highlight">47</i>&nbsp;        boolean success = realtorService.deleteRealtor(id);</b>
-<b class="nc"><i class="no-highlight">48</i>&nbsp;        return new ResponseEntity&lt;&gt;((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );</b>
-<i class="no-highlight">49</i>&nbsp;    }
-<i class="no-highlight">50</i>&nbsp;
-<i class="no-highlight">51</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">4</i>&nbsp;import com.revature.models.Realtor;
+<i class="no-highlight">5</i>&nbsp;import com.revature.services.RealtorService;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.http.HttpStatus;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;import java.util.List;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;@CrossOrigin
+<i class="no-highlight">14</i>&nbsp;@RestController
+<i class="no-highlight">15</i>&nbsp;@RequestMapping(&quot;/realtors&quot;)
+<b class="fc"><i class="no-highlight">16</i>&nbsp;public class RealtorController {</b>
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    @Autowired
+<i class="no-highlight">19</i>&nbsp;    private RealtorService realtorService;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @GetMapping
+<i class="no-highlight">22</i>&nbsp;    public List&lt;Realtor&gt; getAllRealtors(){
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        return realtorService.getAllRealtors();</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @GetMapping(value = &quot;/{realtor_id}&quot;)
+<i class="no-highlight">27</i>&nbsp;    public ResponseEntity&lt;Realtor&gt; getRealtorById(@PathVariable(&quot;realtor_id&quot;) Integer id){
+<b class="nc"><i class="no-highlight">28</i>&nbsp;        Realtor r = realtorService.getRealtorById(id);</b>
+<i class="no-highlight">29</i>&nbsp;
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        if (r.getRealtorId() != 0) return new ResponseEntity&lt;Realtor&gt;(r, HttpStatus.OK);</b>
+<b class="nc"><i class="no-highlight">31</i>&nbsp;        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    @PostMapping(value = &quot;&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">35</i>&nbsp;    public void addRealtor(@RequestBody Realtor r) {
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        realtorService.addRealtor(r);</b>
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    @PutMapping(value = &quot;/{realtor_id}&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">40</i>&nbsp;    public Realtor updateRealtor(@PathVariable(&quot;realtor_id&quot;) int id, @RequestBody Realtor r){
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        r.setRealtorId(id);</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;        return realtorService.updateRealtor(r);</b>
+<i class="no-highlight">43</i>&nbsp;    }
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;    // @Authorized
+<i class="no-highlight">46</i>&nbsp;    @DeleteMapping(value = &quot;/{realtor_id}&quot;)
+<i class="no-highlight">47</i>&nbsp;    public ResponseEntity&lt;Realtor&gt; deleteRealtor(@PathVariable(&quot;realtor_id&quot;) Integer id){
+<b class="nc"><i class="no-highlight">48</i>&nbsp;        boolean success = realtorService.deleteRealtor(id);</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;        return new ResponseEntity&lt;&gt;((success) ?HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND );</b>
+<i class="no-highlight">50</i>&nbsp;    }
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    @PostMapping(value = &quot;/Login&quot;, consumes = &quot;application/json&quot;, produces = &quot;application/json&quot;)
+<i class="no-highlight">53</i>&nbsp;    public Realtor realtorLogin(@RequestBody Realtor r) {
+<b class="nc"><i class="no-highlight">54</i>&nbsp;        System.out.println(r);</b>
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        String email = r.getEmail();</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        String pass = r.getPassword();</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;        return realtorService.realtorLogin(email, pass);</b>
+<i class="no-highlight">58</i>&nbsp;    }
+<i class="no-highlight">59</i>&nbsp;
+<i class="no-highlight">60</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -150,7 +159,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>

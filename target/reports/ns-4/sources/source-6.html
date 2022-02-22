@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > ListingService</title>
+  <title>Coverage Report > ClientService</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,14 +20,14 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">com.revature.services</a>
 </div>
 
-<h1>Coverage Summary for Class: ListingService (com.revature.services)</h1>
+<h1>Coverage Summary for Class: ClientService (com.revature.services)</h1>
 
 <table class="coverageStats">
 <tr>
   <th class="name">Class</th>
 </tr>
 <tr>
-  <td class="name">ListingService</td>
+  <td class="name">ClientService</td>
 </tr>
 
 </table>
@@ -39,19 +39,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.revature.services;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import com.revature.models.Listing;
-<i class="no-highlight">4</i>&nbsp;
-<i class="no-highlight">5</i>&nbsp;import java.util.List;
+<i class="no-highlight">3</i>&nbsp;import com.revature.models.Appointment;
+<i class="no-highlight">4</i>&nbsp;import com.revature.models.Client;
+<i class="no-highlight">5</i>&nbsp;import com.revature.models.Listing;
 <i class="no-highlight">6</i>&nbsp;
-<i class="no-highlight">7</i>&nbsp;public interface ListingService {
-<i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;    public void addListing(Listing l);
-<i class="no-highlight">10</i>&nbsp;    public Listing getListingById(int id);
-<i class="no-highlight">11</i>&nbsp;    public List&lt;Listing&gt; getAllListings();
-<i class="no-highlight">12</i>&nbsp;    public Listing updateListing(Listing change);
-<i class="no-highlight">13</i>&nbsp;    public boolean deleteListing(int id);
-<i class="no-highlight">14</i>&nbsp;
-<i class="no-highlight">15</i>&nbsp;}
+<i class="no-highlight">7</i>&nbsp;import java.util.List;
+<i class="no-highlight">8</i>&nbsp;import java.util.Set;
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;public interface ClientService {
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;    public Client addClient(Client c);
+<i class="no-highlight">13</i>&nbsp;    public Client getClientById(int id);
+<i class="no-highlight">14</i>&nbsp;    public List&lt;Client&gt; getAllClients();
+<i class="no-highlight">15</i>&nbsp;    public void updateClient(Client change);
+<i class="no-highlight">16</i>&nbsp;    public boolean deleteClient(int id);
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    Client getClientByEmail(String email);
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;    List&lt;Appointment&gt; getApptsByClient(int id);
+<i class="no-highlight">21</i>&nbsp;    Set&lt;Listing&gt; getSavedListings(int id);
+<i class="no-highlight">22</i>&nbsp;    public Client clientLogin(String email, String pass);
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    Client clientRegistration(Client client);
+<i class="no-highlight">25</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -78,7 +88,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-02-19 18:04</div>
+    <div style="float:right;">generated on 2022-02-22 09:06</div>
 </div>
 </body>
 </html>
