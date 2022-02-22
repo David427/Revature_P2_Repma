@@ -51,4 +51,22 @@ public class Listing {
     @JsonIgnoreProperties("savedListings")
     @JsonIgnore
     private Set<Client> savedByClients;
+
+    @Override
+    public String toString() {
+        return "Listing{" +
+                "listingId=" + listingId +
+                ", address='" + address + '\'' +
+                ", bathrooms=" + bathrooms +
+                ", bedrooms=" + bedrooms +
+                ", squareFt=" + squareFt +
+                ", yearBuilt='" + yearBuilt + '\'' +
+                ", price=" + price +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", realtorId=" + realtorId +
+                ", realtor=" + realtor +
+                ", savedByClients=" + savedByClients +
+                '}';
+    }
 }

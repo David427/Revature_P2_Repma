@@ -35,8 +35,9 @@ public class ListingController {
     }
 
     @PostMapping(value = "", consumes = "application/json", produces = "application/json")
-    public void addListing(@RequestBody Listing listing){
-        listingService.addListing(listing);
+    public Listing addListing(@RequestBody Listing listing) {
+        System.out.println(listing);
+        return listingService.addListing(listing);
     }
 
     @PutMapping(value = "/{listing_id}", consumes = "application/json", produces = "application/json")

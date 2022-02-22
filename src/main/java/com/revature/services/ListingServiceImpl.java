@@ -14,8 +14,8 @@ public class ListingServiceImpl implements ListingService {
     ListingRepo listingRepo;
 
     @Override
-    public void addListing(Listing l) {
-        listingRepo.save(l);
+    public Listing addListing(Listing l) {
+        return listingRepo.save(l);
     }
 
     @Override

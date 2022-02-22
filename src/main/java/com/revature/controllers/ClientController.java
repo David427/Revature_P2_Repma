@@ -28,7 +28,7 @@ public class ClientController {
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "profile/{id}", consumes = "application/json", produces = "application/json")
     public void updateClient(@PathVariable("id") int id, @RequestBody Client c){
         c.setClientId(id);
         clientService.updateClient(c);
