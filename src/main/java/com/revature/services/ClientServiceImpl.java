@@ -43,13 +43,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public boolean deleteClient(int id) {
-        try {
-            clientRepo.deleteById(id);
-            return true;
-        } catch (IllegalArgumentException | EmptyResultDataAccessException e) {
-            e.printStackTrace();
-            return false;
-        }
+        clientRepo.deleteById(id);
+        return true;
     }
 
     @Override

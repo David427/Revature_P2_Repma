@@ -40,12 +40,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public boolean deleteAppointment(int id) {
-        try {
-            appointmentRepo.deleteById(id);
-            return true;
-        } catch (EmptyResultDataAccessException e) {
-            e.printStackTrace();
-            return false;
-        }
+        appointmentRepo.deleteById(id);
+        return true;
     }
 }
